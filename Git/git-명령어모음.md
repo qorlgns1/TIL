@@ -18,8 +18,8 @@ git log
 git log --pretty=short
 # 로그 확인시 첫 번째 요약 줄만 보여주기
 
-git log README.md
-# 리드미 관련된 로그만 보기 (폴더 명도 가능)
+git log 폴더/파일명
+# 해당 파일에 관련된 로그만 보기
 
 git log -p
 # 커밋에서 변경된 내용 함께 확인. (뒤에 파일/폴더명 붙여도 됨)
@@ -51,17 +51,8 @@ git reflog
 git commit --amend
 # 바로 전에 작성했던 커밋 메세지 수정
 
-git commit -am "바로 애드하고 커밋하고 싶당"
+git commit -am "commit 메시지"
 # add, commit 한번에 하기
-
-> git rebase -i HEAD~2
-pick 7a34294 Add feature-C
-pick 6fsdfa2 Fix typo
-# 현재 브랜치의 HEAD(최신 commit)를 포함한 두 개의 변경 내역과 관련된 내용 보여짐. 이 두개를 합쳐 한 커밋으로 뭉개버리고 싶다. fix typo가 부끄러우니까!
-
-pick 7a34294 Add feature-C
-fixup 6fsdfa2 Fix typo
-# 뭉개고 싶은 커밋에 'fixup'으로 고쳐주고 저장. 
 
 git remote add origin git@github.com:사용자명/저장소이름.git
 # 주소의 저장소를 원격 저장소로 설정
@@ -78,8 +69,6 @@ git clone git@github....git
 git branch -a
 # 로컬 리포지토리랑 원격 리포지토리 브랜치 모두 표시
 
-git checkout -b feature-D origin/feature-D
-# 원격의 feature-D리포를 내가 새로 만든 feature-D브랜치로 체크아웃
 ```
 
 ### 커밋 메세지
@@ -87,3 +76,11 @@ git checkout -b feature-D origin/feature-D
 - 두 번째 줄: 공백
 - 세 번째 줄 이후: 변경과 관련 내용 상세 기록
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+참고 :  [milooy](https://github.com/milooy/TIL/blob/master/documents/Git/git-guide.md)
