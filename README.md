@@ -1,4 +1,4 @@
-# Today I Learned(TIL)
+# Today I Learned(TIL) 차근차근
 
 ## Git
 * git
