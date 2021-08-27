@@ -14,6 +14,8 @@
  - 정리하면 CORS에서 요청들은 두종류인 Simple request, Preflight request로 나뉘는데 Simple request는 요청을 보내기는 다 보내는데 통과를 못하면 답장만 못 받아오는거고 Preflight request는 요청을 '보내는 것' 도 허락을 먼저 받아야 하고 허락이 떨어지면 요청을 보낼 수 있다. 
  - Simple request로 보내는 것들로도 받는쪽에서 신경 안 써놓으면 서버에 저장된 데이터에 변경이 가해질 수 있는데 이 때문에 SOP만 믿을 게 아니라, 개발자 측에서도 그런 것들에 다 대비해서 서버를 프로그래밍해야한다.
 
+ 참고 :  [웹개발 짜증유발자! CORS가 뭔가요?](https://www.youtube.com/watch?v=bW31xiNB8Nc&ab_channel=%EC%96%84%ED%8C%8D%ED%95%9C%EC%BD%94%EB%94%A9%EC%82%AC%EC%A0%84)
+
 
 
 
