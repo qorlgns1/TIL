@@ -1,17 +1,19 @@
 let fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : '../예제.txt';
-let i = +fs.readFileSync(filePath).toString();
+let input = Number(fs.readFileSync(filePath).toString());
+let num = input;
+let sum;
+let i = 0;
 
-let result = 0;
-let v = 0;
-if(i < 10) {
-    v = '0' + i;
+while (true) {
+    i++;
+
+    sum = Math.floor(num / 10) + num % 10;
+    num = (num % 10) * 10 + sum % 10; 
+
+    if (input === num) {
+	break;
+    } 
 }
 
-console.log(typeof(v))
-
-do{
-    console.log('gg')
-}while(result === i){
-    console.log()
-}
+console.log(i);
