@@ -1,31 +1,24 @@
-let fs = require("fs");
-const filePath = process.platform === "linux" ? "/dev/stdin" : "../예제.txt";
+let fs = require('fs');
+const filePath = process.platform === 'linux' ? '/dev/stdin' : '../예제.txt';
 let input = fs.readFileSync(filePath).toString().trim();
-let len = input.length;
-let word = ["c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z="];
 
-let cnt = 0;
-for (let i = 0; i < len; i++) {
-  console.log("input", input);
-  if (input === "") {
-    break;
-  }
+let word = ['c=', 'c-', 'dz=', 'd-', 'lj', 'nj', 's=', 'z='];
 
-  const a = input.substring(0, 2);
-  if (word.includes(a)) {
-    input = input.substring(word[word.indexOf(a)].length - 1, input.length);
-    cnt++;
-  } else {
-    input = input.substring(1, input.length);
-    cnt++;
+for (let i = 0; i < word.length; i++) {
+  if (input.includes(word[i])) {
+    let reg = new RegExp(word[i], 'g');
+    input = input.replace(reg, 'P');
   }
-  // if (input.includes(word[i])) {
-  //   console.log(i, word[i]);
-  //   input = input.replace(word[i], "");
-  //   cnt++;
-  // } else {
-  //   input = input.substring(i + 1, input.length - 1);
-  //   cnt++;
-  // }
 }
-console.log(cnt);
+
+console.log(input.length);
+
+/* 더 빠른 답안
+const crAlpha = ["c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z="];
+
+for (let alphabet of crAlpha) {
+  input = input.split(alphabet).join("Q");
+}
+
+console.log(input.length);
+*/
