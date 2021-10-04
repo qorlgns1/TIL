@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // //1번
+      // // 매개변수 primitive는 원시값을 전달받고, 매개변수 obj는 객체를 전달받는다.
+      // function changeVal(primitive, obj) {
+      //   primitive += 100;
+      //   obj.name = "Kim";
+      // }
+
+      // // 외부 상태
+      // var num = 100;
+      // var person = { name: "Lee" };
+
+      // console.log(num); // 100
+      // console.log(person); // {name: "Lee"}
+
+      // // 원시값은 값 자체가 복사되어 전달되고 객체는 참조값이 복사되어 전달된다.
+      // changeVal(num, person);
+
+      // // 원시값은 원본이 훼손되지 않는다.
+      // console.log(num); // 100
+
+      // // 객체는 원본이 훼손된다.
+      // console.log(person); // {name: "Kim"}
+
+      // //2번
+      // (function () {
+      //   // ...
+      //   console.log("a");
+      // })();
+
+      // (function () {
+      //   // ...
+      //   console.log("b");
+      // })();
+
+      // !(function () {
+      //   // ...
+      //   console.log("c");
+      // })();
+
+      // +(function () {
+      //   // ...
+      //   console.log("d");
+      // })();
+
+      // //3번
+      // (function () {
+      //   console.log("function call 1");
+      // })();
+      // +(function () {
+      //   console.log("function call 2");
+      // })();
+      // !(function () {
+      //   console.log("function call 3");
+      // })();
+      // ~(function () {
+      //   console.log("function call 4");
+      // })();
+      // (function () {
+      //   console.log("function call 5");
+      // })();
+      // (function () {
+      //   console.log("function call 6");
+      // })();
+
+      // //4번
+      // function countdown(n) {
+      //   for (var i = n; i >= 0; i--) console.log(i);
+      // }
+
+      // countdown(10);
+
+      // function countdown(n) {
+      //   if (n < 0) return;
+      //   console.log(n);
+      //   countdown(n - 1); // 재귀 호출
+      // }
+
+      // countdown(10);
+
+      //5번
+      // debugger;
+      // let x = "global";
+      // const y = "qorlgns";
+
+      // function foo() {
+      //   var x = "local";
+      //   y = "qorlgns";
+      //   console.log(x); // ①
+      // }
+
+      // foo();
+
+      // console.log(x); // ②
+      // console.log(y);
+
+      //6번
+      // 전역 함수
+      // debugger;
+      // let a = "11";
+      // let b = "22";
+
+      // function foo() {
+      //   console.log("global function foo");
+      // }
+
+      // function bar() {
+      //   let b = "33";
+      //   // 중첩 함수
+      //   function foo() {
+      //     b = "44";
+      //     console.log("local function foo");
+      //   }
+
+      //   foo(); // ①
+      // }
+
+      // bar();
+
+      //7번
+      // debugger;
+      // var x = 1;
+
+      // if (true) {
+      //   // var 키워드로 선언된 변수는 함수의 코드 블록(함수 몸체)만을 지역 스코프로 인정한다.
+      //   // 함수 밖에서 var 키워드로 선언된 변수는 코드 블록 내에서 선언되었다 할지라도 모두 전역 변수다.
+      //   // 따라서 x는 전역 변수다. 이미 선언된 전역 변수 x가 있으므로 x 변수는 중복 선언된다.
+      //   // 이는 의도치 않게 변수 값이 변경되는 부작용을 발생시킨다.
+
+      //   function aaaa() {
+      //     var z = 12;
+
+      //     function bbbb() {
+      //       var zzz = 13;
+      //     }
+      //     bbbb();
+      //   }
+      //   aaaa();
+      //   var x = 10;
+      //   var y = 11;
+      // }
+
+      // console.log(x); // 10
+      // console.log(y);
+      // console.log(zzz);
+
+      //8번
+      // var x = "global";
+
+      // function foo() {
+      //   console.log(x); // ①
+      //   var x = "local";
+      // }
+
+      // foo();
+      // console.log(x); // global
+
+      //9번
+      // debugger;
+      // let foo = 1; // 전역 변수
+      // qorlgns = "배기훈";
+      // {
+      //   console.log(foo); // ReferenceError: Cannot access 'foo' before initialization
+      //   let foo = 2; // 지역 변수
+      // }
+
+      //10번
+      class A extends Array {
+        constructor() {
+          super();
+          console.log("A 객체 생성");
+        }
+
+        getName() {
+          console.log("Name");
+        }
+      }
+
+      class B extends A {
+        constructor() {
+          super();
+          console.log("B 객체 생성");
+        }
+
+        getHeight() {
+          console.log("Height");
+        }
+      }
+
+      class C extends B {
+        constructor() {
+          super();
+          console.log("C 객체 생성");
+        }
+
+        getWeight() {
+          console.log("Weight");
+        }
+      }
+    </script>
+  </body>
+</html>
