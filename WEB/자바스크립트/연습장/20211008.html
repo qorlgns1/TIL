@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // //1번
+      // // 생성자 함수
+      // function Person(name) {
+      //   this.name = name;
+      // }
+
+      // const me = new Person("Lee");
+
+      // // me 객체의 생성자 함수는 Person이다.
+      // console.log(me.constructor === Person); // true
+
+      //2번
+      // debugger;
+      // var arr = [];
+      // for (let i = 0; i < 3; i++) {
+      //   arr.push(function () {
+      //     console.log(i);
+      //   });
+      // }
+
+      // for (var k = 0; k < 3; k++) {
+      //   arr[k]();
+      // }
+
+      //3번
+      // debugger;
+      // function outer() {
+      //   const name = "kyle";
+      //   return function inner() {
+      //     const greeting = "hello!";
+      //     //console.log(greeting, name);
+      //   };
+      // }
+      // const getKyle = outer(); //kyle
+      // getKyle(); //hello!kyle
+
+      //4번
+      // debugger;
+      // function handleClick() {
+      //   let count = 0;
+      //   return function () {
+      //     count++;
+      //     return count;
+      //   };
+      // }
+
+      // let count = new handleClick();
+      // console.log(count());
+      // console.log(count());
+
+      //5번
+      // debugger;
+      // function Counter() {
+      //   // 카운트를 유지하기 위한 자유 변수
+      //   var counter = 0;
+
+      //   // 클로저
+      //   this.increase = function () {
+      //     return ++counter;
+      //   };
+
+      //   // 클로저
+      //   this.decrease = function () {
+      //     return --counter;
+      //   };
+      // }
+
+      // const counter = new Counter();
+
+      // console.log(counter.increase()); // 1
+      // console.log(counter.decrease()); // 0
+
+      //6번
+      debugger;
+      // 함수 정의(constructor)가 평가되어 함수 객체를 생성하는 시점에 프로토타입도 더불어 생성된다.
+      // console.log(Person.prototype); // {constructor: ƒ}
+
+      // 생성자 함수
+      // function Person(name) {
+      //   this.name = name;
+      // }
+
+      // 화살표 함수는 non-constructor다.
+      const Person = (name) => {
+        this.name = name;
+      };
+
+      // non-constructor는 프로토타입이 생성되지 않는다.
+      console.log(Person.prototype); // undefined
+    </script>
+  </body>
+</html>
