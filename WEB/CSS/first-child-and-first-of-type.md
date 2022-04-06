@@ -46,8 +46,11 @@
 
 ## first-child 와 first-of-type 를 차이를 알아보자.
 
-> :first-child => 형제 요소의 그룹 중 첫번째 요소를 나타낸다.
-> :first-of-type => 형제 요소의 그룹 중 해당 타입의 첫번째 요소를 나타낸다.
+> :first-child => 형제 요소의 그룹 중 첫번째 요소를 나타낸다.  
+> => 쉽게 이야기하면 first-child(nth-child())는 자기 자신 기준으로 바라보면 안되고 자신의 부모의 기준에서 바라봐야한다.
+
+> :first-of-type => 형제 요소의 그룹 중 해당 타입의 첫번째 요소를 나타낸다.  
+> => first-child(nth-child())와 다르게 부모기준이아니고 type 기준으로 바라봐야한다.
 
 형제 요소란, 태그 or 클래스명 등과 같은 것으로 구분하는 것이 아닌, 단순히 같은 레벨의 요소라고 보면 된다.
 아래 코드를 보면 같은 색상을 가지고 있는 요소가 서로 형제라는 것을 의미한다.
@@ -113,4 +116,5 @@
 
 ### 참고
 
-[:first-child, :first-of-type 차이](https://mygumi.tistory.com/342)
+[:first-child, :first-of-type 차이](https://mygumi.tistory.com/342)  
+[:nth-child가 이상혀요](https://www.youtube.com/watch?v=4p7gPzAtVqc&t=2s&ab_channel=%EB%B9%94%EC%BA%A0%ED%94%84CSS) (이건 나중에 꼭 다시보자...!)
