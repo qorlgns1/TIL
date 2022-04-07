@@ -1,17 +1,5 @@
 # Today I Learned(TIL)
 
-## Git
-
-- git
-  - [git과 github을 이용한 협업](https://github.com/qorlgns1/TIL/blob/master/Git/git-study.md)
-  - [git 기초 명령어 모음](https://github.com/qorlgns1/TIL/blob/master/Git/git-%EB%AA%85%EB%A0%B9%EC%96%B4%EB%AA%A8%EC%9D%8C.md)
-  - [git flow](https://github.com/qorlgns1/TIL/blob/master/Git/git-flow.md)
-
-## Internet
-
-- [내 웹 사이트 디자인을 시작하려면 어떻게 해야 할까요?](https://github.com/qorlgns1/TIL/blob/master/Internet/basic.md)
-- [인터넷은 어떻게 동작하는가?](https://github.com/qorlgns1/TIL/blob/master/Internet/%EC%9D%B8%ED%84%B0%EB%84%B7%EC%9D%80%EC%96%B4%EB%96%BB%EA%B2%8C%EB%8F%99%EC%9E%91%ED%95%98%EB%8A%94%EA%B0%80.md)
-
 ## WEB
 
 - [모든 개발자를 위한 HTTP 웹 기본지식](https://github.com/qorlgns1/TIL/tree/master/WEB/Internet/%EB%AA%A8%EB%93%A0%EA%B0%9C%EB%B0%9C%EC%9E%90%EB%A5%BC%EC%9C%84%ED%95%9CHTTP%EC%9B%B9%EA%B8%B0%EB%B3%B8%EC%A7%80%EC%8B%9D)
@@ -25,6 +13,20 @@
 - [Internet](https://github.com/qorlgns1/TIL/tree/master/WEB/Internet)
   - [인터넷은 어떻게 동작하는가?](https://github.com/qorlgns1/TIL/blob/master/WEB/Internet/%EC%9D%B8%ED%84%B0%EB%84%B7%EC%9D%80%EC%96%B4%EB%96%BB%EA%B2%8C%EB%8F%99%EC%9E%91%ED%95%98%EB%8A%94%EA%B0%80.md)
   - [웹개발 기초 지식](https://github.com/qorlgns1/TIL/blob/master/WEB/Internet/basic.md)
+- [HTML](https://github.com/qorlgns1/TIL/tree/master/WEB/HTML)
+  - [HTML Living Standard](https://github.com/qorlgns1/TIL/blob/master/WEB/HTML/HTML-Living-Standard.md)
+  - [HTML5](https://github.com/qorlgns1/TIL/blob/master/WEB/HTML/HTML5.md)
+  - [Grouping Content](https://github.com/qorlgns1/TIL/blob/master/WEB/HTML/Grouping-Content.md)
+  - [Embedded content](https://github.com/qorlgns1/TIL/blob/master/WEB/HTML/Embedded-Content.md)
+  - [Table Tag](https://github.com/qorlgns1/TIL/blob/master/WEB/HTML/Table.md)
+- [CSS](https://github.com/qorlgns1/TIL/tree/master/WEB/CSS)
+  - [CSS naming convention](https://github.com/qorlgns1/TIL/blob/master/WEB/CSS/CSS-naming-convention.md)
+  - [:first-child, :first-of-type 차이](https://github.com/qorlgns1/TIL/blob/master/WEB/CSS/first-child-and-first-of-type.md)
+  - [마진 겹침 현상 (margin collapsing)](https://github.com/qorlgns1/TIL/blob/master/WEB/CSS/margin-collapsing.md)
+  - [대체 CSS 박스 모델 (Alternative CSS Box Model)](https://github.com/qorlgns1/TIL/blob/master/WEB/CSS/alternative-css-box-model.md)
+  - [flex](https://github.com/qorlgns1/TIL/blob/master/WEB/CSS/flex.md)
+  - [position](https://github.com/qorlgns1/TIL/blob/master/WEB/CSS/position.md)
+  - [overflow](https://github.com/qorlgns1/TIL/blob/master/WEB/CSS/overflow.md)
 - [JavaScript](https://github.com/qorlgns1/TIL/tree/master/WEB/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8)
   - [함수형 프로그래밍과 JavaScript ES6 강의](https://github.com/qorlgns1/TIL/tree/master/WEB/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EA%B3%BC-JavaScript-ES6%2B%EA%B0%95%EC%9D%98)
     - [고차함수](https://github.com/qorlgns1/TIL/blob/master/WEB/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EA%B3%BC-JavaScript-ES6%2B%EA%B0%95%EC%9D%98/%EA%B3%A0%EC%B0%A8%ED%95%A8%EC%88%98.html)
@@ -37,7 +39,17 @@
 - [CORS](https://github.com/qorlgns1/TIL/blob/master/WEB/CORS.md)
 - [JWT](https://github.com/qorlgns1/TIL/blob/master/WEB/JWT.md)
 - [HMR - Hot Module Replacement](https://github.com/qorlgns1/TIL/blob/master/WEB/HotModuleReplacement.md)
-- [HTML5](https://github.com/qorlgns1/TIL/blob/master/WEB/HTML5.md)
+
+## Internet
+
+- [내 웹 사이트 디자인을 시작하려면 어떻게 해야 할까요?](https://github.com/qorlgns1/TIL/blob/master/Internet/basic.md)
+- [인터넷은 어떻게 동작하는가?](https://github.com/qorlgns1/TIL/blob/master/Internet/%EC%9D%B8%ED%84%B0%EB%84%B7%EC%9D%80%EC%96%B4%EB%96%BB%EA%B2%8C%EB%8F%99%EC%9E%91%ED%95%98%EB%8A%94%EA%B0%80.md)
+
+## Git
+
+- [git과 github을 이용한 협업](https://github.com/qorlgns1/TIL/blob/master/Git/git-study.md)
+- [git 기초 명령어 모음](https://github.com/qorlgns1/TIL/blob/master/Git/git-%EB%AA%85%EB%A0%B9%EC%96%B4%EB%AA%A8%EC%9D%8C.md)
+- [git flow](https://github.com/qorlgns1/TIL/blob/master/Git/git-flow.md)
 
 ## ETC
 
