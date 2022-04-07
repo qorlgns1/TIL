@@ -24,6 +24,7 @@
   - [:first-child, :first-of-type 차이](https://github.com/qorlgns1/TIL/blob/master/WEB/CSS/first-child-and-first-of-type.md)
   - [마진 겹침 현상 (margin collapsing)](https://github.com/qorlgns1/TIL/blob/master/WEB/CSS/margin-collapsing.md)
   - [대체 CSS 박스 모델 (Alternative CSS Box Model)](https://github.com/qorlgns1/TIL/blob/master/WEB/CSS/alternative-css-box-model.md)
+  - [CSS 변수 사용하기](<https://github.com/qorlgns1/TIL/blob/master/WEB/CSS/Using-CSS-custom-properties(variables).md>)
   - [flex](https://github.com/qorlgns1/TIL/blob/master/WEB/CSS/flex.md)
   - [position](https://github.com/qorlgns1/TIL/blob/master/WEB/CSS/position.md)
   - [overflow](https://github.com/qorlgns1/TIL/blob/master/WEB/CSS/overflow.md)
