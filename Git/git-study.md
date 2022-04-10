@@ -166,6 +166,18 @@ git push origin [브랜치이름] # 대괄호 없이
 git reset HEAD^ # 가장 최근의 커밋을 취소
 ```
 
+```bash
+# 잘못해서 push 했을 경우
+# git log에서 돌아가고 싶은 해시값을 적어준다. 대괄호 빼고
+# 아래의 방법은 굉장히 위험하다. reset hard를 쓰면 돌아간 시점 이후의 커밋들이 지워버린다는뜻이다.
+# hash란 eefc9d0d67f16d623fde83a0262bbe392cf2323 이런값을 이야기한다.
+git reset --hard [hash]
+
+# 그래도 위의 방법을 택했다면 git push했을 때 에러가 날것이다.
+# 아래의 방법은 강제로 push 하는 방법이다. 웬만하면 피하자!
+git push -f origin main
+```
+
 ## 기록
 
 push가 정상적으로 끝나고 Repository에 들어가면 Compare & pull request가 생기고 그것을 누르면 PR을 만들 수 있다.  
