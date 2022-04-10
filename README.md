@@ -52,6 +52,7 @@
 - [git과 github을 이용한 협업](https://github.com/qorlgns1/TIL/blob/master/Git/git-study.md)
 - [git 기초 명령어 모음](https://github.com/qorlgns1/TIL/blob/master/Git/git-%EB%AA%85%EB%A0%B9%EC%96%B4%EB%AA%A8%EC%9D%8C.md)
 - [git flow](https://github.com/qorlgns1/TIL/blob/master/Git/git-flow.md)
+- [git ignore 사용법 정리](https://github.com/qorlgns1/TIL/blob/master/Git/gitignore.md)
 
 ## 알고리즘
 
