@@ -4,7 +4,7 @@
 
 ## overflow
 
-div태그 안에 어떠한 태그에 float 속성을 주면 div태그에서 공중에 떠있다고 생각한다. 그 증거는 div 태그에 border값을 주면 자식 요소가 포함이 안되어있는 것을 알고있다. 하지만 html 태그는 다르다 html태그에 border값을 주면 float 속성이 있는 태그까지 border 태그로 감싸고 있음을 알 수 있다. 이러한 것을 BFC(Block Fomatting context)라고한다. 만약 div태그에 overflow: hidden을 주게 되면 이 div 태그는 BFC가 된다. 그리고 어떠한 형제태그가 밑에 존재해도 이 div태그를 침범하지 않게된다. 나는 [유튜브강의](<(https://www.youtube.com/watch?v=O-n1EjDEuIc&ab_channel=%EB%B9%94%EC%BA%A0%ED%94%84CSS)>)를 통해서 이것을 공부해보았다. 그런데 유튜브에서 설명하는것과 조금 다른것을 발견해서 질문을 남겨보았다. 그리고 답변이 왔다.
+div태그(부모태그라고 가정) 안에 어떠한 태그(자식태그)에 float 속성을 주면 div태그에서 공중에 떠있다고 생각한다. 그 증거는 div 태그에 border값을 주면 자식 요소가 포함이 안되어있는 것을 알수있다. 하지만 html 태그는 다르다 html태그에 border값을 주면 float 속성이 있는 태그까지 border 로 감싸고 있음을 알 수 있다. 이러한 것을 BFC(Block Fomatting context)라고한다. 만약 div태그에 overflow: hidden을 주게 되면 이 div 태그는 BFC가 된다. 그리고 어떠한 형제태그가 밑에 존재해도 이 div태그를 침범하지 않게된다. 나는 [유튜브강의](<(https://www.youtube.com/watch?v=O-n1EjDEuIc&ab_channel=%EB%B9%94%EC%BA%A0%ED%94%84CSS)>)를 통해서 이것을 공부해보았다. 그런데 유튜브에서 설명하는것과 조금 다른것을 발견해서 질문을 남겨보았다. 그리고 답변이 왔다.
 
 ![유튜브 질문](./images/overflow-study-question.png)
 
