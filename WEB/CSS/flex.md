@@ -18,6 +18,7 @@
       .flex-container {
         padding: 10px;
         background: lightgray;
+        display: flex; /* inline-flex */
       }
 
       .flex-item {
@@ -25,10 +26,6 @@
         border: 3px solid rgb(50, 50, 40);
         color: white;
         background: mediumseagreen;
-      }
-
-      .flex-container {
-        display: flex; /* inline-flex */
       }
     </style>
   </head>
@@ -148,8 +145,8 @@ flex-direction flex-wrap의 순서로 한칸 떼고 작성하면 된다.
 > justify, align  
 > (꼭 머리에 넣어둬야해!!)  
 > 앞으로 justify가 나오면 메인축(오뎅꼬치 방향)으로 (좌우) 정렬  
-> align은 수직축(오뎅을 뜯어내는)방향 (상하)으로 정렬이라고 생각하면 된다.
->
+> align은 수직축(오뎅을 뜯어내는)방향 (상하)으로 정렬이라고 생각하면 된다.  
+> 물론 오뎅꼬치의 방향이 바뀌면 justify와 align의 방향도 달라진다!
 > ![justify, align](https://studiomeal.com/wp-content/uploads/2020/01/09-1.jpg)
 
 ## justify-content
@@ -185,7 +182,7 @@ flex-direction flex-wrap의 순서로 한칸 떼고 작성하면 된다.
 
 ## align-items
 
-바로 코드를 보자! [1분코딩](https://studiomeal.com/archives/197) 에 들어가서 실습할 수 있다.!
+아래 코드를 참고! 그리고 [1분코딩](https://studiomeal.com/archives/197) 에 들어가서 실습할 수 있다.!
 
 ```css
 .container {
@@ -215,3 +212,104 @@ baseline
 아이템들을 텍스트 베이스라인 기준으로 정렬!
 
 ![베이스라인 이미지](https://studiomeal.com/wp-content/uploads/2020/01/11.jpg)
+
+다음과 같은 레이아웃을 만들려면??
+
+![이미지](https://studiomeal.com/wp-content/uploads/2020/01/12.jpg)
+
+```css
+/* 좌측 css */
+display: flex;
+justify-content: center;
+align-item: center;
+```
+
+```css
+/* 우측 css */
+display: inline-flex;
+justify-content: center;
+align-item: center;
+width: 30px;
+height: 30px;
+```
+
+## flex-basis
+
+- flex-basis는 Flex 아이템의 기본 크기를 설정한다.
+  - flex-direction이 row일 때는 너비, column일 때는 높이.
+- 기본값 auto는 해당 아이템의 width값을 사용한다.
+- width를 주지 않고 flex-basis를 10px 이렇게 주면 box의 width는 10px이 된다. 하지만 width를 이용하는 것을 권장한다.
+- flex-basis: 100px을 주면 원래 100px이 넘는 박스는 그 상태를 유지하지만 원래 100px이 안되는 박스들은 100px로 늘어나게 된다. 반면에 width를 설정하면, 원래 100px을 넘는 박스들도 100px로 맞춰진다. 이때 안에 content가 다음줄로 넘어가게 하려면 word-wrap: break-word;를 적용해야한다. 안그러면 영역만 100px로 줄어들고 안에 컨텐츠가 넘칠 경우 옆으로 삐져나가버린다.
+
+```css
+.item {
+  flex-basis: auto; /* 기본값 */
+  /* flex-basis: 0; */
+  /* flex-basis: 50%; */
+  /* flex-basis: 300px; */
+  /* flex-basis: 10rem; */
+  /* flex-basis: content; */
+}
+```
+
+## flex-grow
+
+- flex-grow는 아이템이 flex-basis의 값보다 커질 수 있는지를 결정하는 속성이다.
+- 늘어나는 속성을 가지고 있다. 기본값은 0으로 늘어나지 않게 기본값이 셋팅되어있고 늘어나고 싶다면 1을 준다.  
+  각 박스들의 **남은 여백**을 나눠가지게 된다.
+- flex-grow에 들어가는 숫자의 의미는, 아이템들의 flex-basis를 제외한 여백 부분을 flex-grow에 지정된 숫자의 비율로 나누어 가진다고 생각해야 한다.
+
+![flex-grow](https://studiomeal.com/wp-content/uploads/2020/01/13-1.jpg)
+
+## flex-shrink
+
+- flex-shrink는 flex-grow와 쌍을 이루는 속성으로, 아이템이 flex-basis의 값보다 작아질 수 있는지를 결정한다.
+- 줄어주는 속성을 가지고 있다. 기본값은 1로 줄어들게끔 기본값이 셋팅되어있고, 줄어들지 않으려면 0을 주면된다.(flex-grow와 기본값이 반대이다.)
+- flex-shrink를 0으로 세팅하면 아이템의 크기가 flex-basis보다 작아지지 않기 때문에 고정폭의 컬럼을 쉽게 만들 수 있다. 고정 크기는 width로 설정합니다.
+
+```css
+.container {
+  display: flex;
+}
+.item:nth-child(1) {
+  flex-shrink: 0;
+  width: 100px;
+}
+.item:nth-child(2) {
+  flex-grow: 1;
+}
+```
+
+## flex
+
+flex는 flex-basis, flex-grow, flex-shrink 를 줄여서 한번에 사용할 수 있는 축약속성이다.
+
+```css
+/* flex-grow: 1; flex-shrink: 1; flex-basis: 0%;
+주의사항: 이런 식으로 flex-basis를 생략해서 쓰면 flex-basis의 값은 0이 된다. */
+flex: 1;
+
+/* flex-grow: 1; flex-shrink: 1; flex-basis: auto; */
+flex: 1 1 auto;
+
+/* flex-grow: 1; flex-shrink: 1; flex-basis: 500px; */
+flex: 1 500px;
+```
+
+```css
+/* flex 축약속성 예시 추가 */
+.item {
+  flex: 1 1 0;
+}
+.item:nth-child(2) {
+  flex: 2 1 0;
+}
+
+/* 위와 같이 flex-basis:0; 으로 주면 기본 점유 크기를 0으로 만들어서 결국 전체크기를 1:2:1 이런식으로 설정되게 된다.  
+여백의 비가 아닌, 영역 자체를 원하는 비율로 분할하기를 원한다면 이렇게 flex-basis을 0으로 하면 손쉽게 처리할 수 있어요. */
+```
+
+## order
+
+각 아이템들의 시각적 나열 순서를 결정하는 속성이에요.
+숫자값이 들어가며, 작은 숫자일 수록 먼저 배치됩니다. “시각적” 순서일 뿐, HTML 자체의 구조를 바꾸는 것은 아니므로 접근성 측면에서 사용에 주의하셔야 한다. 시각 장애인분들이 사용하는 스크린 리더로 화면을 읽을 때, order를 이용해 순서를 바꾼 것은 의미가 없다는 것을 기억해야 한다.
