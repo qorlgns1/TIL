@@ -28,6 +28,7 @@
   - [flex](https://github.com/qorlgns1/TIL/blob/master/WEB/CSS/flex.md)
   - [position](https://github.com/qorlgns1/TIL/blob/master/WEB/CSS/position.md)
   - [overflow](https://github.com/qorlgns1/TIL/blob/master/WEB/CSS/overflow.md)
+  - [float](https://github.com/qorlgns1/TIL/blob/master/WEB/CSS/float.md)
 - [JavaScript](https://github.com/qorlgns1/TIL/tree/master/WEB/javascript)
   - [함수형 프로그래밍과 JavaScript ES6 강의](https://github.com/qorlgns1/TIL/tree/master/WEB/javascript/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EA%B3%BC-JavaScript-ES6%2B%EA%B0%95%EC%9D%98)
     - [고차함수](https://github.com/qorlgns1/TIL/blob/master/WEB/javascript/%ED%95%A8%EC%88%98%ED%98%95-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D%EA%B3%BC-JavaScript-ES6%2B%EA%B0%95%EC%9D%98/%EA%B3%A0%EC%B0%A8%ED%95%A8%EC%88%98.html)
