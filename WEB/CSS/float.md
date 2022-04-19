@@ -50,12 +50,12 @@ margin-top을 사용했을 때는 내가 생각한 그림처럼 상하 조절이
     좋아..! 내가 원하는대로 내려간다..!
 
 3. **margin-top: -10px 사용**  
-   ![float_3](./images/float_3.png)
+   ![float_3](./images/float_3.png)  
    ![float_3-1](./images/float_3-1.png)  
    좋아..! 맞아..! 내가 원하는대로 올라가고있어..! 근데 마이너스 마진이여서 그런지 아이콘을 선택했을 때 안보이네..? -10px 마진이 먹힌건 보이는데..
 
 4. **margin-bottom: 35px 사용**  
-   ![float_4-1](./images/float_4-1.png)
+   ![float_4-1](./images/float_4-1.png)  
    ![float_4](./images/float_4.png)  
    뭐여 이거 왜이래? 내 생각대로면 페이스북 아이콘이 위로 올라가야하는데..?
 
@@ -75,7 +75,7 @@ margin-top을 사용했을 때는 내가 생각한 그림처럼 상하 조절이
 
    **ㅇㅇ ㅇㅋ 그럼 어떻게 해야 부모가 감지할 수 있는데??**
 
-   부모 요소에게 overflow:hidden 속성을 주면 float요소의 높이를 감지하게 된다.(기억나 기억나)
+   부모 요소에게 overflow:hidden 속성을 주면 float요소의 높이를 감지하게 된다.(기억나 기억나)  
    ![float_5](./images/float_5.png)
 
 5. **margin-bottom: -35px 사용**  
