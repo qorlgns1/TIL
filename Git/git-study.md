@@ -77,15 +77,25 @@ git clone [ 경로 ] # 대괄호 빼고
 
 ```bash
 # config 확인
+git config --list
+
+# 전역 config 확인
 git config --global --list
 
-# config 설정하기
+# 전역 config 설정하기
 git config --global "user.name(본인 닉네임)"
 git config --global "user.email(자신의 이메일)"
+
+# 로컬 config 설정하기(전역보다 우선순위를 갖는다.
+git config --local "user.name(본인 닉네임)"
+git config --local "user.email(자신의 이메일)"
 
 # config 삭제하기
 git config --unset --global "user.name(본인 닉네임)"
 git config --unset --global "user.email(본인 이메일)"
+
+# default 브랜치를 main 브랜치로 변경하는 방법
+git config --global init.defaultBranch main
 ```
 
 > 본인 닉네임은 깃헙 우측 상단 눌렀을때 Signed in as 닉네임  
@@ -115,10 +125,26 @@ git branch
 git branch [branchname]  # 대괄호 없이 사용! 앞으로도 계속!
 
 # 브랜치 이동  # 브랜치 이동에는 checkout, switch, restore 이 있는데 나중에 공부해서 업데이트하기..!
+
+# git 2.23 버전부터는 checkout 기능이 다양해서 switch와 restore로 바뀌었다
+
+# branch만 이동하는 경우 switch를 사용하면 된다
+git switch [branchname]
+
+# 브랜치를 생성하면서 이동까지 하는 경우
+git switch -c [branchname]
+
+# switch와 restore를 동시에 하는경우
 git checkout [branchname]
 
 # 브랜치 삭제
 git branch -d [branchname]
+
+# 지울 브랜치에 다른 브랜치로 적용되지 않은 내용의 커밋이 있을 시에는 -D(대문자) 옵션으로 강제 삭제할 수 있다.
+git branch -D [branchname]
+
+# 브랜치 이름 바꾸기
+git branch -m [기존 브랜치명] [새 브랜치명]
 
 # 원격(레파지토리에 있는) 브랜치 삭제
 git push origin --delete [branchname]
@@ -157,25 +183,55 @@ git reset HEAD~1 # 가장 최근에 커밋한것을 지우자. (급한불부터.
 git commit --amend # 리눅스를 다룰수 있으면 사용방법을 알텐데..(물론 나도 잘모름) 이것은 나중에 직접 보면서 이야기하기..
 ```
 
+## push 하기 전에 잠깐!
+
+push 하기 전에 내 파일목록을 보면 불필요한 파일이 보이나요? 그렇다면 gitignore를 사용해보세요.  
+gitignore 파일이 있다면 거기를 사용하면되고 gitignore 파일이 없다면 최상단 디렉토리에 .gitignore 파일을 만들면 내가 커밋하지 말아야할 파일을 적어주세요! [여기](https://github.com/qorlgns1/TIL/blob/master/Git/gitignore.md)에 가시면 사용법을 보실 수 있습니다.!
+
 ## push에 대하여
 
 ```bash
 git push origin [브랜치이름] # 대괄호 없이
-
-# git push 취소하기
-git reset HEAD^ # 가장 최근의 커밋을 취소
 ```
 
+## reset 과 revert에 대하여
+
+reset 되돌리는 시점 이후의 히스토리를 전부 지워버린다. 그래서 협업할 때 문제가 생긴다. 그래서 협업시에는 revert 사용을 권장하고 팀원들과 이야기된 가장 최근 커밋을 지우는 용도같은 경우에는 reset을 사용할 수 있다. 하지만 지운다는 히스토리는 남지않아 그것도 revert로 작업을 하는 것을 권장한다.
+
 ```bash
-# 잘못해서 push 했을 경우
+# 잘못해서 push 했을 경우 reset 사용법.
+
 # git log에서 돌아가고 싶은 해시값을 적어준다. 대괄호 빼고
 # 아래의 방법은 굉장히 위험하다. reset hard를 쓰면 돌아간 시점 이후의 커밋들이 지워버린다는뜻이다.
 # hash란 eefc9d0d67f16d623fde83a0262bbe392cf2323 이런값을 이야기한다.
+
 git reset --hard [hash]
 
 # 그래도 위의 방법을 택했다면 git push했을 때 에러가 날것이다.
 # 아래의 방법은 강제로 push 하는 방법이다. 웬만하면 피하자!
 git push -f origin main
+```
+
+```bash
+# revert 하고 싶은 것
+git revert 해시
+
+# revert 해도 히스토리가 남지않고 한번에 커밋할 때 쓰는방법
+get revert --no-commit 해시
+
+```
+
+## 로그 확인
+
+```bash
+# 기본적인 로그 확인
+git log
+
+# 해당 브랜치명 로그만 보기
+git log [브랜치명]
+
+# 여러브랜치가 어떻게 작동되고 있는지 좀 더 그래픽하게 확인하고 싶을 때 명령어
+git log --all --decorate --oneline --graph
 ```
 
 ## 기록
@@ -190,3 +246,4 @@ PR를 날리면 팀원들과 코멘트를 달며 코드리뷰를 진행할 수 �
 1. [add, commit, push 취소하기](https://gmlwjd9405.github.io/2018/05/25/git-add-cancle.html)
 2. [Github으로 팀 프로젝트 하기 1편 | Pull request 코드리뷰 개발자](https://www.youtube.com/watch?v=9FZaYz0s8s4&ab_channel=%EB%9D%BC%EB%A7%A4%EA%B0%9C%EB%B0%9C%EC%9E%90)
 3. [Github으로 팀 프로젝트 하기 2편 | conflict 해결 개발자](https://www.youtube.com/watch?v=FmLzvXyFKIE&ab_channel=%EB%9D%BC%EB%A7%A4%EA%B0%9C%EB%B0%9C%EC%9E%90)
+4. [로컬 config 설정시 필요한 정보](https://aroma-dev.tistory.com/20)
