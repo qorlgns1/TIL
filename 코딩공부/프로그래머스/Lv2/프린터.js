@@ -1,47 +1,20 @@
-// function solution(priorities, location) {
-//   let answer = 0;
-//   const sameNumIndex = priorities.findIndex((num, i) => {
-//     return priorities[location] === num && i !== location;
-//   });
-
-//   if (sameNumIndex === -1) {
-//     answer = priorities.filter((num) => num > priorities[location]).length;
-//     return answer + 1;
-//   }
-
-//   const removeDuplPriorities = [...new Set(priorities)].sort((a, b) => b - a);
-//   let selectIndex = 0;
-//   let index = priorities.findIndex(
-//     (num) => num === removeDuplPriorities[selectIndex]
-//   );
-
-//   while (true) {
-//     if (
-//       priorities[location] <= priorities[index % priorities.length] &&
-//       location !== index % priorities.length
-//     ) {
-//       priorities[index % priorities.length] = 0;
-//       index++;
-//       answer++;
-//     } else {
-//       return answer + 1;
-//     }
-//   }
-// }
-
 function solution(priorities, location) {
-  let answer = 1;
-  while (true) {
-    const print = priorities.shift();
-    const biggerPrintNumIndex = priorities.findIndex((num) => num > print);
+  let answer = [];
+  let waitList = priorities.map((x, i) => [x, i]);
 
-    if (biggerPrintNumIndex > -1) {
-      priorities.push(print);
-    } else if( print === biggerPrintNumIndex == location) {
-    }else {
-      return answer;
+  while (waitList.length) {
+    const front = waitList.shift();
+    if (front[0] >= Math.max(...waitList.map((x) => x[0]))) {
+      answer.push(front[1]);
+      if (front[1] === location) {
+        break;
+      }
+    } else {
+      waitList.push(front);
     }
   }
+
+  return answer.indexOf(location) + 1;
 }
 
 // console.log(solution([7, 6, 5, 4, 3, 2, 1], 3));
