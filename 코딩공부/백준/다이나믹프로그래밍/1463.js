@@ -10,12 +10,10 @@ for (let i = 2; i < dp.length; i++) {
   dp[i] = dp[i - 1] + 1; // 1을 뺀 경우의 최솟값
 
   if (i % 3 === 0) {
-    dp[i] = Math.min(dp[i], dp[i / 3] + 1); // 3으로 나눴을 경우의 최솟값
+    dp[i] = Math.min(dp[i / 3] + 1, dp[i]);
   }
 
   if (i % 2 === 0) {
-    dp[i] = Math.min(dp[i], dp[i / 2] + 1); // 2로 나눴을 경우의 최솟값
+    dp[i] = Math.min(dp[i / 2] + 1, dp[i]);
   }
 }
-
-console.log(dp[N]);
