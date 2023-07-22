@@ -52,10 +52,14 @@ const solution1 = (arr, num) => {
 
   for (let rt = 0; rt < arr.length; rt++) {
     sum += arr[rt];
-    if (sum === num) answer++;
+    if (sum <= num) {
+      answer = Math.max(answer, rt - lt + 1);
+    }
     while (sum >= num) {
       sum -= arr[lt++];
-      if (sum === num) answer++;
+      if (sum <= num) {
+        answer = Math.max(answer, rt - lt + 1);
+      }
     }
   }
 
