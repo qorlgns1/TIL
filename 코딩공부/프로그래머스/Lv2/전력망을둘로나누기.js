@@ -1,34 +1,55 @@
 function solution(n, wires) {
-  let answer = Number.MAX_SAFE_INTEGER;
-  let visited = Array.from({ length: n + 1 }, () => 0);
-  let count = 1;
-  let graph = Array.from(Array(n + 1), () => Array(n + 1).fill(0));
-  for (let [a, b] of wires) {
-    graph[a][b] = 1;
-    graph[b][a] = 1;
+  var answer = Number.MAX_SAFE_INTEGER;
+
+  // 1. 전선들이 연결된 정보를 담는다.
+  const adjList = {};
+  for (let i = 1; i <= n; i++) {
+    adjList[i] = new Set();
   }
 
-  function DFS(L) {
-    for (let i = 1; i <= n; i++) {
-      if (visited[i] === 0 && graph[L][i] === 1) {
-        visited[L] = 1;
-        count++;
-        DFS(i);
-        visited[L] = 0;
+  for (let i = 0; i < wires.length; i++) {
+    const [from, to] = wires[i];
+    adjList[from].add(to);
+    adjList[to].add(from);
+  }
+
+  function dfs(node, visited) {
+    // 3. 각 노드를 탐색하여 연결된 정보를 찾는다.
+    visited.push(node);
+
+    for (const nextNode of adjList[node]) {
+      if (!visited.includes(nextNode)) {
+        dfs(nextNode, visited);
       }
     }
+
+    return visited;
   }
 
-  for (let [a, b] of wires) {
-    // 끊어진것을 표시하기 위해 0 으로 만들기
-    graph[a][b] = 0;
-    graph[b][a] = 0;
-    count = 1;
-    DFS(1);
-    graph[a][b] = 1;
-    graph[b][a] = 1;
-    answer = Math.min(answer, Math.abs(n - count - count));
+  for (let i = 0; i < wires.length; i++) {
+    const [from, to] = wires[i];
+
+    // 2. wires 배열의 wires의 인덱스 기준으로 간선을 끊는다.
+    adjList[from].delete(to);
+    adjList[to].delete(from);
+
+    const visited = [];
+    // 4. 연결된 노드의 정보를 받는다.
+    const result = dfs(1, visited);
+
+    // 5. [연결된 노드의 수, 또 다른 연결된 노드 수 (전체 노드 - 연결된 노드의 수)]
+    // 기존에 모든 노드는 연결되어있고, 2번에서 간선을 끊으면 무조건 2개의 연결된 노드로 나온다.
+    const nodeLen = [result.length, n - result.length];
+
+    // 6. 두 연결된 노드의 차이중 작은값을 갱신한다.
+    const subtract = Math.max(...nodeLen) - Math.min(...nodeLen);
+    answer = Math.min(answer, subtract);
+
+    // 7. 끊어진 노드를 다시 연결한다.
+    adjList[from].add(to);
+    adjList[to].add(from);
   }
+
   return answer;
 }
 
