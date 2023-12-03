@@ -1,99 +1,63 @@
-/**
- * @param {number} n 선수의 수, 1~100
- * @param {number[][]} results 경기결과, [a, b] === a가 b를 이김
- * @returns {number} 정확하게 순위를 매길 수 있는 선수의 수
- */
+function solution(n, results) {
+  var answer = 0;
+  const adjListWinner = {};
+  const adjListLoser = {};
 
-// 새롭게 작성중인 코드
-// function solution(n, results) {
-//   var answer = 0;
-//   const adjListWinner = {};
-//   const adjListLoser = {};
+  // 1번을 2번으로 대체
+  // start 1번
+  // results.forEach(([from, to]) => {
+  //   adjListWinner[from] = adjListWinner[from]
+  //     ? adjListWinner[from].add(to)
+  //     : new Set([to]);
+  //   adjListLoser[to] = adjListLoser[to]
+  //     ? adjListLoser[to].add(from)
+  //     : new Set([from]);
+  // });
+  // end 1번
 
-//   results.forEach(([from, to]) => {
-//     adjListWinner[from] = adjListWinner[from]
-//       ? adjListWinner[from].add(to)
-//       : new Set([to]);
-//     adjListLoser[to] = adjListLoser[to]
-//       ? adjListLoser[to].add(from)
-//       : new Set([from]);
-//   });
+  // start 2번
+  for (let i = 1; i <= n; i++) {
+    adjListWinner[i] = new Set();
+    adjListLoser[i] = new Set();
+  }
 
-//   debugger;
+  results.forEach(([from, to]) => {
+    adjListWinner[from] = adjListWinner[from].add(to);
+    adjListLoser[to] = adjListLoser[to].add(from);
+  });
+  // end 2번
 
-//   function BFS(node, graph) {
-//     const result = 1;
-//     const queue = [node];
-//     const visited = Array.from({ length: n + 1 }, () => false);
-//     visited[node] = true;
+  for (let i = 1; i <= n; i++) {
+    // i 선수를 이긴 선수(losers[i])들은 i 선수에게 패한 선수들(wins[i])도 이김
+    for (const winner of [...adjListLoser[i]]) {
+      if (!adjListWinner[winner]) continue;
 
-//     while (queue.length) {
-//       const n = queue.shift();
+      for (const loser of [...adjListWinner[i]]) {
+        adjListWinner[winner].add(loser);
+      }
+    }
 
-//       for (let item of graph[n].keys()) {
-//         if (!visited[item]) {
-//           visited[item] = true;
-//           queue.push(item);
-//         }
-//       }
-//     }
+    // i 선수에게 패한 선수들은 i 선수를 이긴 선수들에게도 패함
+    for (const loser of [...adjListWinner[i]]) {
+      if (!adjListLoser[loser]) continue;
 
-//     return result;
-//   }
+      for (const winner of [adjListLoser[i]]) {
+        adjListLoser[loser].add(winner);
+      }
+    }
+  }
 
-//   for (let i = 1; i <= n; i++) {}
+  for (let i = 1; i <= n; i++) {
+    const winnerLen = adjListWinner[i] ? adjListWinner[i].size : 0;
+    const loserLen = adjListLoser[i] ? adjListLoser[i].size : 0;
 
-//   // for (n of [...Object.keys(adjListWinner)]) {
-//   //   n = Number(n);
-//   //   function BFS(node) {
-//   //     const queue = [node];
+    if (winnerLen + loserLen === n - 1) {
+      answer++;
+    }
+  }
 
-//   //     while (queue.length) {
-//   //       const node = queue.shift();
-//   //       if (n !== node) {
-//   //         adjListWinner[n].add(node);
-//   //       }
-
-//   //       if (adjListWinner[node] && n !== node) {
-//   //         queue.push(...adjListWinner[node]);
-//   //       }
-//   //     }
-//   //   }
-
-//   //   BFS(n);
-//   // }
-
-//   // for (n of [...Object.keys(adjListLoser)]) {
-//   //   n = Number(n);
-//   //   function BFS(node) {
-//   //     const queue = [node];
-
-//   //     while (queue.length) {
-//   //       const node = queue.shift();
-//   //       if (n !== node) {
-//   //         adjListLoser[n].add(node);
-//   //       }
-
-//   //       if (adjListLoser[node]) {
-//   //         queue.push(...adjListLoser[node]);
-//   //       }
-//   //     }
-//   //   }
-
-//   //   BFS(n);
-//   // }
-
-//   for (let i = 1; i <= n; i++) {
-//     const winnerLen = adjListWinner[i] ? adjListWinner[i].size : 0;
-//     const loserLen = adjListLoser[i] ? adjListLoser[i].size : 0;
-
-//     if (winnerLen + loserLen === n - 1) {
-//       answer++;
-//     }
-//   }
-
-//   return answer;
-// }
+  return answer;
+}
 
 // ----------------------------------------------------------------------------------------------------
 
@@ -221,46 +185,46 @@
 // ----------------------------------------------------------------------------------------------------
 
 // 다른사람 코드 정답
-function solution(n, results) {
-  const rangeN = [...Array(n).keys()].map((e) => e + 1);
-  // key: winner, value : Set([losers])
-  const wins = {};
-  // key: loser, value : Set([winners])
-  const loses = {};
-  rangeN.map((key) => {
-    wins[key] = new Set([]);
-    loses[key] = new Set([]);
-  });
+// function solution(n, results) {
+//   const rangeN = [...Array(n).keys()].map((e) => e + 1);
+//   // key: winner, value : Set([losers])
+//   const wins = {};
+//   // key: loser, value : Set([winners])
+//   const loses = {};
+//   rangeN.map((key) => {
+//     wins[key] = new Set([]);
+//     loses[key] = new Set([]);
+//   });
 
-  // 승패 결과 저장
-  results.map((val) => {
-    const [winner, loser] = val;
-    wins[winner].add(loser);
-    loses[loser].add(winner);
-  });
+//   // 승패 결과 저장
+//   results.map((val) => {
+//     const [winner, loser] = val;
+//     wins[winner].add(loser);
+//     loses[loser].add(winner);
+//   });
 
-  rangeN.map((i) => {
-    // i 선수를 이긴 선수(losers[i])는 i 선수에게 패한 선수들(wins[i])도 이김
-    for (const winner of [...loses[i]]) {
-      if (!wins[winner]) continue;
-      for (const loser of wins[i]) {
-        wins[winner].add(loser);
-      }
-    }
-    // i 선수에게 패한 선수는 i선수를 이긴 선수들에게도 패함
-    for (const loser of [...wins[i]]) {
-      if (!loses[loser]) continue;
-      for (const winner of loses[i]) {
-        loses[loser].add(winner);
-      }
-    }
-  });
+//   rangeN.map((i) => {
+//     // i 선수를 이긴 선수(losers[i])는 i 선수에게 패한 선수들(wins[i])도 이김
+//     for (const winner of [...loses[i]]) {
+//       if (!wins[winner]) continue;
+//       for (const loser of wins[i]) {
+//         wins[winner].add(loser);
+//       }
+//     }
+//     // i 선수에게 패한 선수는 i선수를 이긴 선수들에게도 패함
+//     for (const loser of [...wins[i]]) {
+//       if (!loses[loser]) continue;
+//       for (const winner of loses[i]) {
+//         loses[loser].add(winner);
+//       }
+//     }
+//   });
 
-  return rangeN.reduce(
-    (ans, i) => (wins[i].size + loses[i].size === n - 1 ? ans + 1 : ans),
-    0
-  );
-}
+//   return rangeN.reduce(
+//     (ans, i) => (wins[i].size + loses[i].size === n - 1 ? ans + 1 : ans),
+//     0
+//   );
+// }
 
 // ----------------------------------------------------------------------------------------------------
 
