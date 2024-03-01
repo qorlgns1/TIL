@@ -26,6 +26,7 @@ console.log(Math.max(...dp));
 
 // 주어진 예제와 질문게시판에 있는 모든예제는 통과했지만 답변제출시 실패한 코드
 // 백준 질문 게시판에 질문을 남겨 놓음
+// 예제 코드: https://www.acmicpc.net/board/view/137613#comment-209375
 // let fs = require('fs');
 // const filePath = process.platform === 'linux' ? '/dev/stdin' : '../예제.txt';
 // let [[N], arr] = fs
