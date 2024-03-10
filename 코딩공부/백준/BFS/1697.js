@@ -20,7 +20,6 @@ while (queue.length) {
     break;
   } else {
     ch[x] = 1;
-    answer++;
 
     if (x * 2 <= MAX_LEN && !ch[x * 2]) queue.push([x * 2, cnt + 1]);
     if (x + 1 <= MAX_LEN && !ch[x + 1]) queue.push([x + 1, cnt + 1]);
