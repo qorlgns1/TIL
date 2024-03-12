@@ -1,3 +1,6 @@
+// https://www.acmicpc.net/problem/14226
+// https://brick-parrot-a90.notion.site/BFS-66d28c4b19184cf4a7a7aad8275af728?pvs=4
+
 let fs = require('fs');
 const filePath = process.platform === 'linux' ? '/dev/stdin' : '../예제.txt';
 const S = Number(fs.readFileSync(filePath).toString().trim());
